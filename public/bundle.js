@@ -24920,11 +24920,14 @@
 	            null,
 	            React.createElement(Nav, null),
 	            React.createElement(
-	                'h2',
-	                null,
-	                'Main Component'
-	            ),
-	            this.props.children
+	                'div',
+	                { className: 'row' },
+	                React.createElement(
+	                    'div',
+	                    { className: 'colums medium-6 large-4 small-centered' },
+	                    this.props.children
+	                )
+	            )
 	        );
 	    }
 	});
@@ -26693,7 +26696,7 @@
 	        return React.createElement(
 	            'h3',
 	            null,
-	            'About Component'
+	            'Simple React Weather App'
 	        );
 	    }
 	});
@@ -26708,14 +26711,48 @@
 
 	var React = __webpack_require__(8);
 
+	var _require = __webpack_require__(166),
+	    Link = _require.Link;
+
 	var Examples = React.createClass({
 	    displayName: 'Examples',
 
 	    render: function render() {
 	        return React.createElement(
-	            'h3',
+	            'div',
 	            null,
-	            'Examples Component'
+	            React.createElement(
+	                'h1',
+	                { className: 'text-center' },
+	                'Examples'
+	            ),
+	            React.createElement(
+	                'p',
+	                null,
+	                'Here are a few example locations to try out'
+	            ),
+	            React.createElement(
+	                'ul',
+	                null,
+	                React.createElement(
+	                    'li',
+	                    null,
+	                    React.createElement(
+	                        Link,
+	                        { to: '/?location=Split' },
+	                        'Split, Croatia'
+	                    )
+	                ),
+	                React.createElement(
+	                    'li',
+	                    null,
+	                    React.createElement(
+	                        Link,
+	                        { to: '/?location=Tokyo' },
+	                        'Tokyo, Japan'
+	                    )
+	                )
+	            )
 	        );
 	    }
 	});
