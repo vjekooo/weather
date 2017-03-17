@@ -3,7 +3,12 @@ var React = require('react');
 var About = React.createClass({
     render: function() {
         return (
-            <h3>Simple React Weather App</h3>
+            <div>
+                <h3>About</h3>
+                <p>This is a simple weather app made with React and Open Weather Map API.</p>
+                <p>The only working feature is current temperature for a selected city.</p>
+                <p>Celcius only!</p>
+            </div>
         );
     }
 });

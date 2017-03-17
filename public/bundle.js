@@ -26694,9 +26694,28 @@
 
 	    render: function render() {
 	        return React.createElement(
-	            'h3',
+	            'div',
 	            null,
-	            'Simple React Weather App'
+	            React.createElement(
+	                'h3',
+	                null,
+	                'About'
+	            ),
+	            React.createElement(
+	                'p',
+	                null,
+	                'This is a simple weather app made with React and Open Weather Map API.'
+	            ),
+	            React.createElement(
+	                'p',
+	                null,
+	                'The only working feature is current temperature for a selected city.'
+	            ),
+	            React.createElement(
+	                'p',
+	                null,
+	                'Celcius only!'
+	            )
 	        );
 	    }
 	});
