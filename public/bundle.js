@@ -24951,7 +24951,14 @@
 
 	    onSearch: function onSearch(e) {
 	        e.preventDefault();
-	        alert('Not yet wired up');
+
+	        var location = this.refs.search.value;
+	        var encodedLocation = encodeURIComponent(location);
+
+	        if (location.length > 0) {
+	            this.refs.search.value = '';
+	            window.location.hash = '#/?location=' + encodedLocation;
+	        }
 	    },
 	    render: function render() {
 	        return React.createElement(
@@ -25009,7 +25016,7 @@
 	                        React.createElement(
 	                            'li',
 	                            null,
-	                            React.createElement('input', { type: 'search', placeholder: 'Search weather' })
+	                            React.createElement('input', { type: 'search', placeholder: 'Search weather by city', ref: 'search' })
 	                        ),
 	                        React.createElement(
 	                            'li',
@@ -25059,6 +25066,23 @@
 	            that.setState({ isLoading: false });
 	            alert(errorMessage);
 	        });
+	    },
+	    componentDidMount: function componentDidMount() {
+	        // This wires up Examples component with handleSearch
+	        var location = this.props.location.query.location;
+
+	        if (location && location.length > 0) {
+	            this.handleSearch(location);
+	            window.location.hash = '#/'; // removes current city location from URL
+	        }
+	    },
+	    componentWillReceiveProps: function componentWillReceiveProps(newProps) {
+	        var location = newProps.location.query.location;
+
+	        if (location && location.length > 0) {
+	            this.handleSearch(location);
+	            window.location.hash = '#/'; // removes current city location from URL
+	        }
 	    },
 	    render: function render() {
 	        var _state = this.state,

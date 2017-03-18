@@ -25,6 +25,22 @@ var Weather = React.createClass({
             alert(errorMessage);
         });
     },
+    componentDidMount: function() { // This wires up Examples component with handleSearch
+        var location = this.props.location.query.location;
+
+        if (location && location.length > 0) {
+            this.handleSearch(location);
+            window.location.hash = '#/'; // removes current city location from URL
+        }
+    },
+    componentWillReceiveProps: function(newProps) {
+        var location = newProps.location.query.location;
+
+        if (location && location.length > 0) {
+            this.handleSearch(location);
+            window.location.hash = '#/'; // removes current city location from URL
+        }
+    },
     render: function() {
         var {isLoading, temp, location} = this.state;
 
